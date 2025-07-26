@@ -1,0 +1,27 @@
+<input type="file" class="file-input"
+       (change)="onFileSelected($event)" #fileUpload>
+
+<!-- <div class="file-upload">
+
+   {{fileName || "No file uploaded yet."}}
+
+    <button mat-mini-fab color="primary" class="upload-btn"
+      (click)="fileUpload.click()">
+        <mat-icon>attach_file</mat-icon>
+    </button>
+</div> -->
+
+<div class="upload-container">
+  <h1 class="upload-title">Summarization</h1>
+  <p class="upload-subtitle">
+    Summarizes provided txt file.
+  </p>
+
+  <div class="upload-box" (click)="fileUpload.click()">
+    Select text file
+  </div>
+
+  <div class="file-name" *ngIf="fileName">
+    Selected: {{ fileName }}
+  </div>
+</div>
