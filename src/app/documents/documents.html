@@ -1,1 +1,20 @@
-<p>documents works!</p>
+<div class="files-container" *ngIf="files.length">
+  <h2 class="files-title">Available Files</h2>
+  <div class="files-grid" *ngIf="files.length">
+    <mat-card class="file-card" *ngFor="let file of paginatedFiles">
+    <div class="file-name">{{ file.name }}</div>
+    <mat-card-actions>
+      <button mat-raised-button color="primary">
+      Transcribe
+      </button>
+    </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="pagination" *ngIf="totalPages > 1">
+    <button *ngFor="let page of [].constructor(totalPages); let i = index"
+            [disabled]="currentPage === (i + 1)"
+            (click)="changePage(i + 1)">
+      {{ i + 1 }}
+    </button>
+  </div>
+</div>
