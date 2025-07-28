@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/Gerixmus/text-analysis-frontend/compare/v0.1.1...v0.1.2) (2025-07-28)
+
+
+### Features
+
+* add file upload logic ([#4](https://github.com/Gerixmus/text-analysis-frontend/issues/4)) ([96385e0](https://github.com/Gerixmus/text-analysis-frontend/commit/96385e05b77653827ae9dbd6000ce34a3b9b4e26))
+
 ## [0.1.1](https://github.com/Gerixmus/text-analysis-frontend/compare/v0.1.0...v0.1.1) (2025-07-26)
 
 
