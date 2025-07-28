@@ -1,18 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-documents',
-  imports: [MatCardModule, MatIconModule, CommonModule],
+  imports: [MatCardModule, MatIconModule, CommonModule, MatMenuModule, FormsModule, MatPaginatorModule],
   templateUrl: './documents.html',
   styleUrl: './documents.css'
 })
 export class Documents {
-  currentPage = 1;
-  itemsPerPage = 12;
+  pageIndex = 0;
+  pageSize = 10;
+
   files: { name: string }[] = [];
 
   constructor(private http: HttpClient) {}
@@ -30,16 +34,13 @@ export class Documents {
     });
   }
 
-    get paginatedFiles() {
-    const start = (this.currentPage - 1) * this.itemsPerPage;
-    return this.files.slice(start, start + this.itemsPerPage);
+  get paginatedFiles() {
+    const start = (this.pageIndex) * this.pageSize;
+    return this.files.slice(start, start + this.pageSize);
   }
 
-  get totalPages() {
-    return Math.ceil(this.files.length / this.itemsPerPage);
-  }
-
-  changePage(page: number) {
-    this.currentPage = page;
+  handlePageEvent(e: PageEvent) {
+    this.pageSize = e.pageSize;
+    this.pageIndex = e.pageIndex;
   }
 }
