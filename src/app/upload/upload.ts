@@ -2,15 +2,18 @@ import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-files',
-  imports: [MatIconModule, CommonModule],
-  templateUrl: './files.html',
-  styleUrl: './files.css'
+  selector: 'app-upload',
+  imports: [MatCardModule, MatIconModule,  CommonModule],
+  templateUrl: './upload.html',
+  styleUrl: './upload.css'
 })
-export class Files {
+export class Upload {
   files: { name: string }[] = [];
+  currentPage = 1;
+  itemsPerPage = 12;
 
   constructor(private http: HttpClient) {}
 
@@ -46,4 +49,17 @@ export class Files {
       error: (err) => console.error('Failed to fetch files:', err)
     });
   }
+
+  get paginatedFiles() {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    return this.files.slice(start, start + this.itemsPerPage);
+  }
+
+  get totalPages() {
+    return Math.ceil(this.files.length / this.itemsPerPage);
+  }
+
+  changePage(page: number) {
+    this.currentPage = page;
+}
 }
