@@ -17,6 +17,7 @@
   border-collapse: collapse;
   border-radius: 15px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .files-table th,
@@ -36,31 +37,9 @@
   color: #444;
 }
 
-.files-table tr:hover {
-  background-color: #f9f9f9;
-}
-
-.pagination {
-  margin-top: 1.5rem;
-}
-
-.pagination button {
-  margin: 0 4px;
-  padding: 6px 12px;
-  border: none;
-  background: #1976d2;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.pagination button[disabled] {
-  background: #aaa;
-  cursor: not-allowed;
-}
-
-table.files-table td.paginator-cell {
-  padding: 0;
+.mat-mdc-row:hover {
+  transition: background-color 0.2s ease-in-out;
+  background-color: #f0f0f0;
 }
 
 .mat-mdc-menu-trigger {
@@ -68,4 +47,5 @@ table.files-table td.paginator-cell {
   border: none !important;
   box-shadow: none !important;
   padding: 4px !important;
+  cursor: pointer;
 }

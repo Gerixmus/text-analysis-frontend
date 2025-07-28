@@ -6,14 +6,17 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-documents',
-  imports: [MatCardModule, MatIconModule, CommonModule, MatMenuModule, FormsModule, MatPaginatorModule],
+  imports: [MatCardModule, MatIconModule, CommonModule, MatMenuModule, FormsModule, MatPaginatorModule, MatTableModule],
   templateUrl: './documents.html',
   styleUrl: './documents.css'
 })
 export class Documents {
+  displayedColumns: string[] = ['name', 'status', 'uploaded', 'actions'];
+
   pageIndex = 0;
   pageSize = 10;
 
