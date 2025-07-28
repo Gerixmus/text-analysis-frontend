@@ -2,25 +2,21 @@ import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-files',
-  imports: [MatIconModule, CommonModule],
-  templateUrl: './files.html',
-  styleUrl: './files.css'
+  selector: 'app-upload',
+  imports: [MatCardModule, MatIconModule,  CommonModule],
+  templateUrl: './upload.html',
+  styleUrl: './upload.css'
 })
-export class Files {
-
-  fileName = '';
-
+export class Upload {
   constructor(private http: HttpClient) {}
 
   onFileSelected(event: any) {
     const file:File = event.target.files[0];
 
     if (file) {
-      this.fileName = file.name;
-
       const formData = new FormData();
 
       formData.append("file", file);
@@ -33,5 +29,4 @@ export class Files {
       });
     }
   }
-
 }

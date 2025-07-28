@@ -1,0 +1,13 @@
+<input type="file" class="file-input"
+       (change)="onFileSelected($event)" #fileUpload>
+
+<div class="upload-container">
+  <h1 class="upload-title">Upload a file</h1>
+  <p class="upload-subtitle">
+    This text file will then be available for summarization.
+  </p>
+
+  <div class="upload-box" (click)="fileUpload.click()">
+    Select text file
+  </div>
+</div>

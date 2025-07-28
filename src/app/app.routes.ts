@@ -1,3 +1,8 @@
 import { Routes } from '@angular/router';
+import { Documents } from './documents/documents';
+import { Upload } from './upload/upload';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  { path: '', component: Upload },
+  { path: 'documents', component: Documents }
+];

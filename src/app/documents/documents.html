@@ -1,0 +1,46 @@
+<div class="files-container">
+  <h2 class="files-title">Uploaded documents</h2>
+
+  <div class="files-table">
+    <table mat-table [dataSource]="paginatedFiles">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let element"> {{'null'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="uploaded">
+      <th mat-header-cell *matHeaderCellDef> Uploaded </th>
+      <td mat-cell *matCellDef="let element"> {{'null'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Details</button>
+          <button mat-menu-item>Delete</button>
+        </mat-menu>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <div class="paginator-wrapper">
+    <mat-paginator
+      [length]="files.length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 20, 50]"
+      [showFirstLastButtons]="true"
+      (page)="handlePageEvent($event)">
+    </mat-paginator>
+  </div>
+</div>
