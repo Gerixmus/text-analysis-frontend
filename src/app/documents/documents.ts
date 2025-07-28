@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-documents',
@@ -29,7 +30,7 @@ export class Documents {
   }
 
   fetchFiles(): void {
-    this.http.get<{ name: string }[]>("http://localhost:3000/files").subscribe({
+    this.http.get<{ name: string }[]>(`${environment.apiBaseUrl}/files`).subscribe({
       next: (files) => {
         this.files = files.filter(file => !file.name.includes('_summary.txt'));
       },

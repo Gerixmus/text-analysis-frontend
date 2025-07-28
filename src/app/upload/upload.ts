@@ -3,6 +3,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-upload',
@@ -21,7 +22,7 @@ export class Upload {
 
       formData.append("file", file);
 
-      const upload$ = this.http.post("http://localhost:3000/files", formData);
+      const upload$ = this.http.post(`${environment.apiBaseUrl}/files`, formData);
 
       upload$.subscribe({
         next: (res) => console.log('Upload success:', res),
