@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/Gerixmus/text-analysis-frontend/compare/v0.1.2...v0.1.3) (2025-07-29)
+
+
+### Features
+
+* add navbar ([#7](https://github.com/Gerixmus/text-analysis-frontend/issues/7)) ([12180a6](https://github.com/Gerixmus/text-analysis-frontend/commit/12180a6fb97aa425ecd6a5868073cec4a21fb12f))
+
 ## [0.1.2](https://github.com/Gerixmus/text-analysis-frontend/compare/v0.1.1...v0.1.2) (2025-07-28)
 
 
