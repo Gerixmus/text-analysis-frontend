@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
+import { Documents } from '../documents/documents';
 
 @Component({
   selector: 'app-upload',
@@ -12,7 +14,7 @@ import { environment } from '../../environments/environment';
   styleUrl: './upload.css'
 })
 export class Upload {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   onFileSelected(event: any) {
     const file:File = event.target.files[0];
@@ -25,7 +27,10 @@ export class Upload {
       const upload$ = this.http.post(`${environment.apiBaseUrl}/files`, formData);
 
       upload$.subscribe({
-        next: (res) => console.log('Upload success:', res),
+        next: (res) => {
+          console.log('Upload success:', res),
+          this.router.navigate(['/documents']);
+        },
         error: (err) => console.error('Upload failed:', err)
       });
     }
