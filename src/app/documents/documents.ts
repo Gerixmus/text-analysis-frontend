@@ -47,4 +47,15 @@ export class Documents {
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
   }
+
+  handleFileDeletion(id: string) {
+    this.http.delete(`${environment.apiBaseUrl}/files/${id}`).subscribe({
+      next: () => {
+        this.fetchFiles();
+      },
+      error: err => {
+        console.error('Failed to delete file:', err);
+      }
+    });
+  }
 }

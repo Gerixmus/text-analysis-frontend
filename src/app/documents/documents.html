@@ -26,7 +26,7 @@
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>Details</button>
-          <button mat-menu-item>Delete</button>
+          <button (click)="handleFileDeletion(element.id)" mat-menu-item>Delete</button>
         </mat-menu>
       </td>
     </ng-container>
