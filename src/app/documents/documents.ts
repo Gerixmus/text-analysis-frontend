@@ -32,7 +32,7 @@ export class Documents {
   fetchFiles(): void {
     this.http.get<{ name: string }[]>(`${environment.apiBaseUrl}/files`).subscribe({
       next: (files) => {
-        this.files = files.filter(file => !file.name.includes('_summary.txt'));
+        this.files = files;
       },
       error: (err) => console.error('Failed to fetch files:', err)
     });
