@@ -8,6 +8,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-documents',
@@ -23,7 +24,7 @@ export class Documents {
 
   files: { name: string }[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchFiles()
@@ -57,5 +58,9 @@ export class Documents {
         console.error('Failed to delete file:', err);
       }
     });
+  }
+
+  handleDocumentNavigation(id: string) {
+    this.router.navigate([`/documents/${id}`]);
   }
 }
