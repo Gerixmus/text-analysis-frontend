@@ -8,6 +8,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-documents',
@@ -23,7 +24,7 @@ export class Documents {
 
   files: { name: string }[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchFiles()
@@ -32,7 +33,7 @@ export class Documents {
   fetchFiles(): void {
     this.http.get<{ name: string }[]>(`${environment.apiBaseUrl}/files`).subscribe({
       next: (files) => {
-        this.files = files.filter(file => !file.name.includes('_summary.txt'));
+        this.files = files;
       },
       error: (err) => console.error('Failed to fetch files:', err)
     });
@@ -46,5 +47,20 @@ export class Documents {
   handlePageEvent(e: PageEvent) {
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
+  }
+
+  handleFileDeletion(id: string) {
+    this.http.delete(`${environment.apiBaseUrl}/files/${id}`).subscribe({
+      next: () => {
+        this.fetchFiles();
+      },
+      error: err => {
+        console.error('Failed to delete file:', err);
+      }
+    });
+  }
+
+  handleDocumentNavigation(id: string) {
+    this.router.navigate([`/documents/${id}`]);
   }
 }
