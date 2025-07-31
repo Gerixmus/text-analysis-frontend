@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4](https://github.com/Gerixmus/text-analysis-frontend/compare/v0.1.3...v0.1.4) (2025-07-31)
+
+
+### Features
+
+* add api document integration ([#9](https://github.com/Gerixmus/text-analysis-frontend/issues/9)) ([89eeb10](https://github.com/Gerixmus/text-analysis-frontend/commit/89eeb108ee66ad6ab43e0c64a3335255ddabdc77))
+
 ## [0.1.3](https://github.com/Gerixmus/text-analysis-frontend/compare/v0.1.2...v0.1.3) (2025-07-29)
 
 
